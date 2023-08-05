@@ -1,0 +1,157 @@
+.display-screen
+{
+    border: 1px black solid;
+    height: 400px;
+    width: 500px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+}
+.display-screen-b
+{
+    background-color: black;
+}
+#text-screen
+{
+    height: 200px;
+    width: 500px;
+    border: 1px black solid;
+    display: grid;
+}
+#stop
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: red;
+    color: black;
+    padding: 10px 30px;
+}
+#stop:hover
+{
+    background-color: maroon;
+    cursor: pointer;
+}
+#start
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: lime;
+    color: black;
+    padding: 10px 30px;
+}
+#start:hover
+{
+    background-color: green;
+    cursor: pointer;
+}
+#next
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: black;
+    padding: 10px 30px;
+}
+#next:hover
+{
+    background-color: blue;
+    cursor: pointer;
+}
+body
+{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+h2
+{
+    color: aqua;
+}
+input
+{
+    width: 200px;
+    height: 50px;
+    background: lightBlue;
+}
+.button
+{
+    color:white;
+    background-color: teal;
+    padding: 15px 50px;
+    border: 3px black solid;
+    border-radius: 5px;
+}
+.button:hover
+{
+    background-color: rgb(90, 143, 143);
+}
+.fight-bar
+{
+    height: 80px;
+    width: 470px;
+    background-color: black;
+    color: white;
+    border: white 1px solid;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.9fr 1.5fr;
+    grid-template-rows: 1fr 2fr;
+}
+.fight-info
+{
+    margin: 5px
+}
+.btn1
+{
+    background: red;
+}
+.btn1:hover
+{
+    background: maroon;
+}
+.btn2
+{
+    background: cyan;
+}
+.btn2:hover
+{
+    background: teal;
+}
+.btn3
+{
+    background: gold;
+}
+.btn3:hover
+{
+    background: yellow;
+}
+.btn4
+{
+    background: white;
+}
+.btn4:hover
+{
+    background: black;
+    color: white;
+}
+.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover
+{
+    cursor: pointer;
+}
+
+.btn1, .btn2, .btn3, .btn4
+{
+    border: white 3px solid;
+    margin: 5px;
+}
+.steve
+{
+    display: none;
+}
+.steve2
+{
+    display: all;
+}
+
+
