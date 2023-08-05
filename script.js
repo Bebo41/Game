@@ -100,6 +100,17 @@ function steveFight()
     displayScreen.classList.add("display-screen-b");
     while (player1.health > 0 && steveHealthV > 0 && momentum != 10000)
     {
+        
+        btn1.addEventListener("click", () => 
+        {
+            player1.attack();
+            steveHealthV = steveHealthV - 20;
+        });
+        btn2.addEventListener("click", () => 
+        {
+            p2.innerText = "You attacked Steve";
+            steveHealthV = steveHealthV - 20;
+        });
         steve.setAttribute("class", "steve2");
         steveHealth.innerText = "Steve's Health: " + steveHealthV;
         fightInfo.innerText = "Name: " + player1.name;
@@ -110,16 +121,6 @@ function steveFight()
         btn2.innerText = "Defend";
         btn3.innerText = "Heal";
         btn4.innerText = "Surrender";
-        btn1.addEventListener("click", () => 
-        {
-            p1.innerText = "You attacked Steve";
-            steveHealthV = steveHealthV - 20;
-        });
-        btn2.addEventListener("click", () => 
-        {
-            p2.innerText = "You attacked Steve";
-            steveHealthV = steveHealthV - 20;
-        });
         momentum--;
     }
 }
