@@ -1,8 +1,30 @@
+@keyframes swordAttack
+{
+    from
+    {
+        transform: translateX(-300px);
+    }
+    to
+    {
+        transfor: translateX(0);
+    }
+}
+@keyframes steveAttacked
+{
+    from
+    {
+        transform: translateX(-5px);
+    }
+    to
+    {
+        transfor: translateX(0);
+    }
+}
 .display-screen
 {
     border: 1px black solid;
-    height: 400px;
-    width: 500px;
+    height: 500px;
+    width: 800px;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -73,6 +95,11 @@ input
     width: 200px;
     height: 50px;
     background: lightBlue;
+}
+.images-div
+{
+    display:flex;
+    align-items: center;
 }
 .button
 {
@@ -152,6 +179,22 @@ input
 .steve2
 {
     display: all;
+}
+.steve3
+{
+    animation: steveAttacked 0.2s ease-in 1s 10 normal both;
+    display: all;
+}
+.sword
+{
+    display: none;
+}
+.sword2
+{
+    animation: swordAttack 3s ease-in;
+    display: all;
+    height: 60px;
+    width: 57px;
 }
 
 

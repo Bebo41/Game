@@ -5,8 +5,13 @@ import
 } from "./player.js";
 import
 {
-    steveFight
+    steveFight,
+    steve
 } from "./fight.js";
+import
+{
+    Mega
+} from "./playMusic.js";
 //exports
 export
 {
@@ -95,18 +100,15 @@ function removeChildren2()
         displayScreen.removeChild(askAge);
         displayScreen.removeChild(nextButton2);
         displayScreen.removeChild(playerAge);
+        Mega();
+        setTimeout(Mega, 0);
+        setTimeout(Mega, 0);
+        player1.weapon = "Sword";
+        steve.setAttribute("class", "steve2");
         steveFight();
     }
 }
 //The Boss!
-
-/*
-function steveTurn()
-{
-    p2.innerHtml = "Steve attacks you and you lose 15% of your health";
-}*/
-
-
 function stop()
 {
     const anchor = document.createElement("a");

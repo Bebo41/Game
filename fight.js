@@ -11,13 +11,13 @@ let steveText = document.createElement("p");
 let steveHealth = document.createElement("h3");
 let health = 250;
 const steve = document.querySelector(".steve");
+const sword = document.querySelector(".sword");
 
 function steveFight()
 {
     appendChildrenToFight();
     steveTalk();
     displayScreen.classList.add("display-screen-b");
-    steve.setAttribute("class", "steve2");
     steveHealth.innerText = "Steve's Health: " + health;
     fightInfo.innerText = "Name: " + player1.name;
     fightInfo2.innerText = "Age: " + player1.age;
@@ -31,10 +31,14 @@ function steveFight()
 }
 function attack()
 {
-    health = health - 20;
     p1.innerText = "You attack Steve";
+    sword.setAttribute("class", "sword2");
+    setTimeout(()=>{steve.setAttribute("class", "steve3")}, 4000);
+    health = health - 20;
     if(player1.health > 0 && health > 0)
     {
+        setTimeout(()=>{sword.setAttribute("class", "sword");}, 3000);
+        setTimeout(()=>{steve.setAttribute("class", "steve2");}, 1000);
         steveFight();
     }else
     {
@@ -94,7 +98,8 @@ function steveTalk()
 //exports
 export
 {
-    steveFight
+    steveFight,
+    steve
 }
 //imports
 import
