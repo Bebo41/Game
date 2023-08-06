@@ -7,17 +7,21 @@ class Player
         this.health = health;
         this.weapon = "weapon";
     }
-    attack()
-    {
-        console.log("You attack with your " + this.weapon);
-    }
-    defend()
-    {
-        console.log("You defend yourself from the enemy attack");
-    }
-    heal()
-    {
-        console.logZ("You heal so your health increases");
-    }
 }
-export {Player}
+//exports
+export 
+{
+    Player
+}
+//imports
+/*
+import 
+{ steveHealthV, 
+    p1,
+    p2,
+    p3,
+    p4, 
+    p5, 
+    p6 
+} from "./script.js";
+*/
