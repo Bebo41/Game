@@ -34,7 +34,7 @@ let up = 0;
 let down = 0;
 let right = 0;
 let left = 0;
-let health = 250;
+let health = 300;
 
 function steveFight()
 {
@@ -101,9 +101,25 @@ function appendChildrenToFight()
 }
 function steveChoice()
 {
-    let num = Math.random() * 4 + 1;
+    
+    steveHealth.innerText = "Steve's Health: " + health;
+    let num = Math.random() * 2 + 1;
     num = Math.floor(num);
-    console.log(num);
+    switch(num)
+    {
+        case 1:
+            randomizedAttack();
+            break;
+        case 2:
+            steveAttack4();
+            break;
+    }
+}
+function randomizedAttack()
+{
+    console.log("ran");
+    let num = Math.random() * 3 + 1;
+    num = Math.floor(num);
     switch(num)
     {
         case 1:
@@ -115,13 +131,12 @@ function steveChoice()
         case 3:
             steveAttack3();
             break;
-        case 4:
-            steveAttack4();
-            break;
     }
 }
 function steveAttack1()
 {
+    displayScreen.appendChild(steveText2);
+    steveText2.innerText = "Choose a number Between 1 and 3";
     displayScreen.appendChild(answer);
     displayScreen.appendChild(submitBtn);
     submitBtn.innerText = "submit";
@@ -129,6 +144,8 @@ function steveAttack1()
 }
 function steveAttack2()
 {
+    displayScreen.appendChild(steveText2);
+    steveText2.innerText = "Choose a number Between 1 and 3";
     displayScreen.appendChild(answer);
     displayScreen.appendChild(submitBtn);
     submitBtn.innerText = "submit";
@@ -136,6 +153,8 @@ function steveAttack2()
 }
 function steveAttack3()
 {
+    displayScreen.appendChild(steveText2);
+    steveText2.innerText = "Choose a number Between 1 and 3";
     displayScreen.appendChild(answer);
     displayScreen.appendChild(submitBtn);
     submitBtn.innerText = "submit";
@@ -181,12 +200,13 @@ function steveAttack4()
 {
     displayScreen.appendChild(steveText2);
     steveText2.innerText = "press The left arrow " + PublicRandomNum;
-    setTimeout(()=>{steveText2.innerText = "press The right arrow " + PublicRandomNum2;}, 2000);
-    setTimeout(()=>{steveText2.innerText = "press The down arrow " + PublicRandomNum3;}, 4000);
-    setTimeout(()=>{steveText2.innerText = "press The up arrow " + PublicRandomNum4;}, 6000);
-    setTimeout(()=>{steveText2.innerText = "";}, 8000);
+    setTimeout(()=>{steveText2.innerText = "press The right arrow " + PublicRandomNum2;}, 800);
+    setTimeout(()=>{steveText2.innerText = "press The down arrow " + PublicRandomNum3;}, 1600);
+    setTimeout(()=>{steveText2.innerText = "press The up arrow " + PublicRandomNum4;}, 2400);
+    setTimeout(()=>{steveText2.innerText = "";}, 3200);
     window.addEventListener("keydown", buttonsA);
     displayScreen.appendChild(submitBtn);
+    submitBtn.innerText = "Submit";
     submitBtn.addEventListener("click", check);
 }
 function buttonsA(e)
@@ -241,6 +261,7 @@ function removeChildrenOfAttacks123()
 {
     displayScreen.removeChild(answer);
     displayScreen.removeChild(submitBtn);
+    displayScreen.removeChild(steveText2);
     steveFight();
 }
 //exports

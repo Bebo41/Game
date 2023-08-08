@@ -89,13 +89,13 @@ function removeChildren2()
         displayScreen.removeChild(playerAge);
         Mega();
         setTimeout(Mega, 0);
-        setTimeout(Mega, 230000);
+        setTimeout(Mega, 220000);
+        setTimeout(Mega, 400000);
         player1.weapon = "Sword";
         steve.setAttribute("class", "steve2");
         steveFight();
     }
 }
-//The Boss!
 function stop()
 {
     const anchor = document.createElement("a");

@@ -27,6 +27,11 @@
     border: 3px white solid;
     padding: 25px 40px;
 }
+.submit-button:hover
+{
+    cursor: pointer;
+    background-color: rgb(34, 30, 30);
+}
 .display-screen
 {
     border: 5px black solid;
