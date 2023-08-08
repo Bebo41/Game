@@ -17,25 +17,12 @@ export
 {
     player1,
     displayScreen,
-    p1,
-    p2,
-    p3,
-    p4,
-    p5,
-    p6
 };
 //elements
 const body = document.querySelector("body");
 const displayScreen = document.querySelector(".display-screen");
 const startBtn = document.querySelector("#start");
 const stopBtn = document.querySelector("#stop");
-const nextBtn = document.querySelector("#next");
-const p1 = document.querySelector("#p1");
-const p2 = document.querySelector("#p2");
-const p3 = document.querySelector("#p3");
-const p4 = document.querySelector("#p4");
-const p5 = document.querySelector("#p5");
-const p6 = document.querySelector("#p6");
 let playerName = document.createElement("input");
 let playerAge = document.createElement("input");
 let askName = document.createElement("h2");
@@ -102,7 +89,7 @@ function removeChildren2()
         displayScreen.removeChild(playerAge);
         Mega();
         setTimeout(Mega, 0);
-        setTimeout(Mega, 0);
+        setTimeout(Mega, 230000);
         player1.weapon = "Sword";
         steve.setAttribute("class", "steve2");
         steveFight();

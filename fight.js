@@ -7,8 +7,14 @@ let btn1 = document.createElement("button");
 let btn2 = document.createElement("button");
 let btn3 = document.createElement("button");
 let btn4 = document.createElement("button");
-let steveText = document.createElement("p");
+let steveText = document.createElement("h1");
+let f1 = document.createElement("h1");
+let f2 = document.createElement("h1");
+let f3 = document.createElement("h1");
 let steveHealth = document.createElement("h3");
+let answer = document.createElement("input");
+let submitBtn = document.createElement("button");
+submitBtn.setAttribute("class", "submit-button");
 let health = 250;
 const steve = document.querySelector(".steve");
 const sword = document.querySelector(".sword");
@@ -16,7 +22,6 @@ const sword = document.querySelector(".sword");
 function steveFight()
 {
     appendChildrenToFight();
-    steveTalk();
     displayScreen.classList.add("display-screen-b");
     steveHealth.innerText = "Steve's Health: " + health;
     fightInfo.innerText = "Name: " + player1.name;
@@ -28,18 +33,35 @@ function steveFight()
     btn3.innerText = "Heal";
     btn4.innerText = "Surrender";
     btn1.addEventListener("click", attack);
+    /*
+    window.addEventListener("keydown", e => {
+        switch(e.code) {
+            case "ArrowLeft":
+                console.log("the left arrow was pressed");
+                break;
+            default:
+                console.log("A key was pressed but it wasnt the left arrow key");
+        }
+    })*/
 }
 function attack()
 {
-    p1.innerText = "You attack Steve";
+    displayScreen.removeChild(fightBar);
+    btn1.removeEventListener("click", attack);
     sword.setAttribute("class", "sword2");
-    setTimeout(()=>{steve.setAttribute("class", "steve3")}, 4000);
+    setTimeout(() => 
+    {
+        steve.setAttribute("class", "steve3")
+        Punch();
+        Punch();
+        Punch();
+    }, 2000);
     health = health - 20;
     if(player1.health > 0 && health > 0)
     {
-        setTimeout(()=>{sword.setAttribute("class", "sword");}, 3000);
-        setTimeout(()=>{steve.setAttribute("class", "steve2");}, 1000);
-        steveFight();
+        setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
+        setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
+        setTimeout(steveChoice, 5000); 
     }else
     {
         removeChildrenOfFight();
@@ -50,18 +72,14 @@ function removeChildrenOfFight()
     displayScreen.removeChild(steveText);
     displayScreen.removeChild(steveHealth);
     displayScreen.removeChild(fightBar);
-    fightBar.removeChild(fightInfo);
-    fightBar.removeChild(fightInfo2);
-    fightBar.removeChild(fightInfo3);
-    fightBar.removeChild(fightInfo4);
-    fightBar.removeChild(btn1);
-    fightBar.removeChild(btn2);
-    fightBar.removeChild(btn3);
-    fightBar.removeChild(btn4);
+    sword.setAttribute("class", "sword")
 }
 function appendChildrenToFight()
 {
-    displayScreen.appendChild(steveText);
+    fightBar.appendChild(steveText);
+    fightBar.appendChild(f1);
+    fightBar.appendChild(f2);
+    fightBar.appendChild(f3);
     displayScreen.appendChild(steveHealth);
     displayScreen.appendChild(fightBar);
     fightBar.appendChild(fightInfo);
@@ -82,18 +100,92 @@ function appendChildrenToFight()
     btn3.setAttribute("class", "btn3");
     btn4.setAttribute("class", "btn4");
 }
-function steveTalk()
+function steveChoice()
 {
-    p1.innerText = "Steve: Hello Why did you come here?";
-    setTimeout(() => {
-        p2.innerText = "You: The King sent me to kill you?";
-    }, 8000);
-    setTimeout(() => {
-        p3.innerText = "Steve: hahahahhahahhahahhahahha";
-    }, 18000);
-    setTimeout(() => {
-        p4.innerText = "Steve: lets fight then"
-    }, 20000);
+    let num = Math.random() * 3 + 1;
+    num = Math.floor(num);
+    switch(num)
+    {
+        case 1:
+            steveAttack1();
+            break;
+        case 2:
+            steveAttack2();
+            break;
+        case 3:
+            steveAttack3();
+            break;
+        //case 4:
+           // steveAttack4();
+            //break;
+    }
+}
+function steveAttack1()
+{
+    displayScreen.appendChild(answer);
+    displayScreen.appendChild(submitBtn);
+    submitBtn.innerText = "submit";
+    submitBtn.addEventListener("click", fun1);
+}
+function steveAttack2()
+{
+    displayScreen.appendChild(answer);
+    displayScreen.appendChild(submitBtn);
+    submitBtn.innerText = "submit";
+    submitBtn.addEventListener("click", fun2);
+}
+function steveAttack3()
+{
+    displayScreen.appendChild(answer);
+    displayScreen.appendChild(submitBtn);
+    submitBtn.innerText = "submit";
+    submitBtn.addEventListener("click", fun3);
+}
+function fun1()
+{
+    if(answer.value == "1")
+    {
+        steveText.innerText = "Correct Choice";
+    }else{
+        steveText.innerText = "Wrong Choice";
+        player1.health = player1.health - 15;
+    }
+    submitBtn.removeEventListener("click", fun1);
+    removeChildrenOfAttacks123()
+}
+function fun2()
+{
+    if(answer.value == "2")
+    {
+        steveText.innerText = "Correct Choice";
+    }else{
+        steveText.innerText = "Wrong Choice";
+        player1.health = player1.health - 15;
+    }
+    submitBtn.removeEventListener("click", fun2);
+    removeChildrenOfAttacks123()
+}
+function fun3()
+{
+    if(answer.value == "3")
+    {
+        steveText.innerText = "Correct Choice";
+    }else{
+        steveText.innerText = "Wrong Choice";
+        player1.health = player1.health - 15;
+    }
+    submitBtn.removeEventListener("click", fun3);
+    removeChildrenOfAttacks123()
+}
+
+
+
+function removeChildrenOfAttacks123()
+{
+    submitBtn.removeEventListener("click", ()=>{});
+    displayScreen.removeChild(answer);
+    displayScreen.removeChild(submitBtn);
+    steveFight();
 }
 //exports
 export
@@ -107,3 +199,7 @@ import
     player1,
     displayScreen,
 } from "./script.js";
+import
+{
+    Punch
+} from "./playMusic.js";

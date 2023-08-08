@@ -1,10 +1,17 @@
 function Mega()
 {
-        let audio = new Audio("./Music/mega.mp3");
-        audio.play();
+    let audio = new Audio("./Music/mega.mp3");
+    audio.play();
+}
+function Punch()
+{
+    let audio = new Audio("./Music/punch.mp3");
+    audio.play();
 }
 //exports
 export
 {
-    Mega
+    Mega,
+    Punch
 }
+//imports
