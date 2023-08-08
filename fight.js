@@ -1,3 +1,13 @@
+let healMenu = document.createElement("div");
+let food1 = document.createElement("div");
+let food2 = document.createElement("div");
+let food3 = document.createElement("div");
+let food4 = document.createElement("div");
+let food5 = document.createElement("div");
+let food6 = document.createElement("div");
+let food7 = document.createElement("div");
+let food8 = document.createElement("div");
+let food9 = document.createElement("div");
 let fightBar = document.createElement("div");
 let fightInfo = document.createElement("p");
 let fightInfo2 = document.createElement("p");
@@ -16,6 +26,26 @@ let steveHealth = document.createElement("h3");
 let answer = document.createElement("input");
 let submitBtn = document.createElement("button");
 submitBtn.setAttribute("class", "submit-button");
+healMenu.setAttribute("class", "heal-menu");
+food1.setAttribute("class", "food");
+food2.setAttribute("class", "food");
+food3.setAttribute("class", "food");
+food4.setAttribute("class", "food");
+food5.setAttribute("class", "food");
+food6.setAttribute("class", "food");
+food7.setAttribute("class", "food");
+food8.setAttribute("class", "food");
+food9.setAttribute("class", "food");
+healMenu.appendChild(food1);
+healMenu.appendChild(food2);
+healMenu.appendChild(food3);
+healMenu.appendChild(food4);
+healMenu.appendChild(food5);
+healMenu.appendChild(food6);
+healMenu.appendChild(food7);
+healMenu.appendChild(food8);
+healMenu.appendChild(food9);
+
 fightBar.setAttribute("class", "fight-bar");
 fightInfo.setAttribute("class", "fight-info");
 fightInfo2.setAttribute("class", "fight-info");
@@ -34,13 +64,14 @@ let up = 0;
 let down = 0;
 let right = 0;
 let left = 0;
-let health = 300;
+let health = 400;
 
 function steveFight()
 {
     random();
     appendChildrenToFight();
     displayScreen.classList.add("display-screen-b");
+    steveHealth.innerText = health;
     fightInfo.innerText = "Name: " + player1.name;
     fightInfo2.innerText = "Age: " + player1.age;
     fightInfo3.innerText = "Health: " + player1.health;
@@ -50,30 +81,7 @@ function steveFight()
     btn3.innerText = "Heal";
     btn4.innerText = "Surrender";
     btn1.addEventListener("click", attack);
-}
-function attack()
-{
-    displayScreen.removeChild(fightBar);
-    btn1.removeEventListener("click", attack);
-    sword.setAttribute("class", "sword2");
-    setTimeout(() => 
-    {
-        steve.setAttribute("class", "steve3")
-        Punch();
-        Punch();
-        Punch();
-    }, 2000);
-    health = health - 20;
-    if(player1.health > 0 && health > 0)
-    {
-        setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
-        setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
-        setTimeout(steveChoice, 5000); 
-    }else
-    {
-        steveHealth.innerText = "Steve's Health: " + health;
-        removeChildrenOfFight();
-    }
+    btn3.addEventListener("click", heal);
 }
 function removeChildrenOfFight()
 {
@@ -99,6 +107,91 @@ function appendChildrenToFight()
     fightBar.appendChild(btn3);
     fightBar.appendChild(btn4);
 }
+//attacking
+function attack()
+{
+    displayScreen.removeChild(fightBar);
+    btn1.removeEventListener("click", attack);
+    sword.setAttribute("class", "sword2");
+    setTimeout(() => 
+    {
+        steve.setAttribute("class", "steve3")
+        Punch();
+        Punch();
+        Punch();
+    }, 2000);
+    health = health - 20;
+    if(player1.health > 0 && health > 0)
+    {
+        setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
+        setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
+        setTimeout(steveChoice, 5000); 
+    }else
+    {
+        steveHealth.innerText = "Steve's Health: " + health;
+        removeChildrenOfFight();
+    }
+}
+function heal()
+{
+    displayScreen.removeChild(fightBar);
+    displayScreen.appendChild(healMenu);
+    food1.addEventListener("click", decreaseFood);
+    food2.addEventListener("click", decreaseFood);
+    food3.addEventListener("click", decreaseFood);
+    food4.addEventListener("click", decreaseFood);
+    food5.addEventListener("click", decreaseFood);
+    food6.addEventListener("click", decreaseFood);
+    food7.addEventListener("click", decreaseFood);
+    food8.addEventListener("click", decreaseFood);
+    food9.addEventListener("click", decreaseFood);
+}
+function decreaseFood()
+{
+    console.log(player1.food);
+    switch(player1.food)
+    {
+        case 1:
+            healMenu.removeChild(food1);
+            break;
+        case 2:
+            healMenu.removeChild(food2);
+            break;
+        case 3:
+            healMenu.removeChild(food3);
+            break;
+        case 4:
+            healMenu.removeChild(food4);
+            break;
+        case 5:
+            healMenu.removeChild(food5);
+            break;
+        case 6:
+            healMenu.removeChild(food6);
+            break;
+        case 7:
+            healMenu.removeChild(food7);
+            break;
+        case 8:
+            healMenu.removeChild(food8);
+            break;
+        case 9:
+            healMenu.removeChild(food9);
+            break;
+        default:
+            console.log("error");
+            break;
+    }
+    player1.food--;
+    player1.health = player1.health + 16;
+    if (player1.health > 100)
+    {
+        player1.health = 100;
+    }
+    displayScreen.removeChild(healMenu);
+    steveChoice();
+}
+//steveAttacks
 function steveChoice()
 {
     
@@ -246,7 +339,7 @@ function check()
     else
     {
         steveText.innerText = "Wrong";
-        player1.health = player1.health - 12;
+        player1.health = player1.health - 20;
     }
     displayScreen.removeChild(submitBtn);
     displayScreen.removeChild(steveText2);
@@ -264,6 +357,7 @@ function removeChildrenOfAttacks123()
     displayScreen.removeChild(steveText2);
     steveFight();
 }
+
 //exports
 export
 {

@@ -123,6 +123,32 @@ input
     background-color: rgb(90, 143, 143);
     cursor: pointer;
 }
+.heal-menu
+{
+    width: 400px;
+    height: 400px;
+    background: black;
+    border: gold 2px solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 3px;
+    column-gap: 3px;
+}
+.food
+{
+    width: 120px;
+    height: 120px;
+    border: 2px solid white;
+    background-image: url("./images/burger.jpg");
+    background-size: 120px 130px;
+}
+.food:hover
+{
+    border: lightseagreen 3px solid;
+    cursor: pointer;
+    background-color: rgba(103, 236, 76, 0.281);
+}
 .fight-bar
 {
     height: 200px;
