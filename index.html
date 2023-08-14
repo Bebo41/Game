@@ -5,25 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" href = "images/sword.jpg">
-    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" href = "./CSS/style.css">
+    <link rel = "stylesheet" href = "./CSS/style2.css">
+    <link rel = "stylesheet" href = "./CSS/colorAttack.css">
     <title>Adventure</title>
 </head>
 <body>
     <div class = "display-screen">
         <div class = "images-div">
             <img src = "./images/steve.jpg" class = "steve">
-            <img src = "./images/sword.jpg" class = "sword">
+            <div class = "red">red square</div>
+            <div class = "blue">blue square</div>
+            <img src = "./images/sword.jpg" class = "sword"> 
         </div>
-    </div>
+        <div class = "image-div">
+            <button class = "redBtnV"></button>
+            <button class = "blueBtnV"></button></div>
+        </div>
     <div id = "buttons-area">
         <button id = "start">start</button>
         <button id = "stop">stop</button>
-        <button id = "next">next</button>
+        <button id = "back">back</button>
     </div>
-    <script src = "script.js" type="module"></script>
-    <script src = "player.js" type="module"></script>
-    <script src = "playMusic.js" type="module"></script>
-    <script src = "fight.js" type="module"></script>
-    <script src = "PublicRandomNumbers.js" type="module"></script>
+    <script src = "./JS/script.js" type="module"></script>
+    <script src = "./JS/player.js" type="module"></script>
+    <script src = "./JS/playMusic.js" type="module"></script>
+    <script src = "./JS/fight.js" type="module"></script>
+    <script src = "./JS/PublicRandomNumbers.js" type="module"></script>
 </body>
 </html>

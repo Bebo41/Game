@@ -32,61 +32,6 @@
     cursor: pointer;
     background-color: rgb(34, 30, 30);
 }
-.display-screen
-{
-    border: 5px black solid;
-    height: 730px;
-    width: 1100px;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    color: white;
-    background-color: white;
-}
-.display-screen-b
-{
-    background-color: black;
-    border: 5px solid white;
-}
-#stop
-{
-    border: 0px;
-    border-radius: 5px;
-    background-color: red;
-    color: black;
-    padding: 10px 30px;
-}
-#stop:hover
-{
-    background-color: maroon;
-    cursor: pointer;
-}
-#start
-{
-    border: 0px;
-    border-radius: 5px;
-    background-color: lime;
-    color: black;
-    padding: 10px 30px;
-}
-#start:hover
-{
-    background-color: green;
-    cursor: pointer;
-}
-#next
-{
-    border: 0px;
-    border-radius: 5px;
-    background-color: lightblue;
-    color: black;
-    padding: 10px 30px;
-}
-#next:hover
-{
-    background-color: blue;
-    cursor: pointer;
-}
 body
 {
     display: grid;
@@ -135,6 +80,28 @@ input
     row-gap: 3px;
     column-gap: 3px;
 }
+.shield
+{
+    width: 140px;
+    height: 140px;
+    background-image: url("./images/shield.jpg");
+    background-size: 140px 140px;
+}
+.shield:hover
+{
+    cursor: pointer;
+    border:rgb(103, 185, 86) solid 2px;
+
+}
+.shields
+{
+    width: 450px;
+    height: 150px;
+    background: cyan;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+}
 .food
 {
     width: 120px;
@@ -159,7 +126,7 @@ input
     padding: 4px;
     display: grid;
     grid-template-columns: 1.2fr 1fr 0.9fr 1.5fr;
-    grid-template-rows: 2fr 1fr 1.5fr;
+    grid-template-rows: 4fr 1fr 1.5fr;
 }
 .fight-info
 {
@@ -232,5 +199,3 @@ input
     height: 60px;
     width: 57px;
 }
-
-

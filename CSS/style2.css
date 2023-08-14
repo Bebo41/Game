@@ -1,0 +1,55 @@
+.display-screen
+{
+    border: 5px black solid;
+    height: 730px;
+    width: 1100px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    background-color: white;
+}
+.display-screen-b
+{
+    background-color: black;
+    border: 5px solid white;
+}
+#stop
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: red;
+    color: black;
+    padding: 10px 30px;
+}
+#stop:hover
+{
+    background-color: maroon;
+    cursor: pointer;
+}
+#start
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: lime;
+    color: black;
+    padding: 10px 30px;
+}
+#start:hover
+{
+    background-color: green;
+    cursor: pointer;
+}
+#back
+{
+    border: 0px;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: black;
+    padding: 10px 30px;
+}
+#back:hover
+{
+    background-color: blue;
+    cursor: pointer;
+}

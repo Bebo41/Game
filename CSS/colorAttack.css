@@ -1,0 +1,79 @@
+@keyframes square
+{
+    from
+    {
+        transform: translateX(-300px);
+    }
+    to
+    {
+        transform: translateX(500);
+    }
+}
+body
+{
+    display: grid;
+    justify-content: center;
+}
+.redBtn, .blueBtn
+{
+    width: 50px;
+    height: 50px;
+}
+.redBtn
+{
+    background: red;
+    border: 2px black solid;
+}
+.blueBtn
+{
+    background: blue;
+    border: 2px solid black;
+}
+.redBtn:hover
+{
+    background: lightcoral;
+    cursor: pointer;
+}
+.blueBtn:hover
+{
+    background: lightblue;
+    cursor: pointer;
+}
+.start
+{
+    color: green;
+}
+.red
+{
+    display: none;
+}
+.blue
+{
+    display: none;
+}
+.redA
+{
+    animation: square 1s ease-in;
+    display: all;
+    background: red;
+    border: 2px black solid;
+    width: 50px;
+    height: 50px;
+}
+.blueA
+{
+    animation: square 1s ease-in;
+    display: all;
+    background: blue;
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+}
+.redBtnV
+{
+    display: none;
+}
+.blueBtnV
+{
+    display: none;
+}

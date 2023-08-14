@@ -1,3 +1,4 @@
+const backBtn = document.querySelector("#back");
 let healMenu = document.createElement("div");
 let food1 = document.createElement("div");
 let food2 = document.createElement("div");
@@ -8,6 +9,11 @@ let food6 = document.createElement("div");
 let food7 = document.createElement("div");
 let food8 = document.createElement("div");
 let food9 = document.createElement("div");
+let shieldN = 3;
+let shields = document.createElement("div");
+let shield1 = document.createElement("div");
+let shield2 = document.createElement("div");
+let shield3 = document.createElement("div");
 let fightBar = document.createElement("div");
 let fightInfo = document.createElement("p");
 let fightInfo2 = document.createElement("p");
@@ -27,6 +33,10 @@ let answer = document.createElement("input");
 let submitBtn = document.createElement("button");
 submitBtn.setAttribute("class", "submit-button");
 healMenu.setAttribute("class", "heal-menu");
+shields.setAttribute("class", "shields");
+shield1.setAttribute("class", "shield");
+shield2.setAttribute("class", "shield");
+shield3.setAttribute("class", "shield");
 food1.setAttribute("class", "food");
 food2.setAttribute("class", "food");
 food3.setAttribute("class", "food");
@@ -45,6 +55,7 @@ healMenu.appendChild(food6);
 healMenu.appendChild(food7);
 healMenu.appendChild(food8);
 healMenu.appendChild(food9);
+
 
 fightBar.setAttribute("class", "fight-bar");
 fightInfo.setAttribute("class", "fight-info");
@@ -81,6 +92,7 @@ function steveFight()
     btn3.innerText = "Heal";
     btn4.innerText = "Surrender";
     btn1.addEventListener("click", attack);
+    btn2.addEventListener("click", appendShieldsForDefence);
     btn3.addEventListener("click", heal);
 }
 function removeChildrenOfFight()
@@ -132,8 +144,125 @@ function attack()
         removeChildrenOfFight();
     }
 }
+//defending
+function appendShieldsForDefence()
+{
+    shields.appendChild(shield1);
+    shields.appendChild(shield2);
+    shields.appendChild(shield3);
+    defend();
+}
+function defend()
+{
+    setTimeout(stopDefence2, 2000);
+    displayScreen.removeChild(fightBar);
+    displayScreen.appendChild(shields);
+    btn2.removeEventListener("click", defend);
+    shield1.addEventListener("dblclick", check2);
+    shield2.addEventListener("dblclick", check2);
+    shield3.addEventListener("dblclick", check2);
+}
+function check2()
+{
+    if(shieldN == 3)
+    {
+        shields.removeChild(shield1);
+        shieldN--;
+    }
+    else if(shieldN == 2)
+    {
+        shields.removeChild(shield2);
+        shieldN--;
+    }
+    else if(shieldN == 1)
+    {
+        stopDefence(); 
+    }
+}
+function stopDefence()
+{
+    shields.removeChild(shield3);
+    shieldN = 3;
+    displayScreen.removeChild(shields);
+    shield1.removeEventListener("dblclick", check2);
+    shield2.removeEventListener("dblclick", check2);
+    shield3.removeEventListener("dblclick", check2);
+    ahHellNo();
+}
+function stopDefence2()
+{
+    shields.removeChild(shield3);
+    shieldN = 3;
+    displayScreen.removeChild(shields);
+    shield1.removeEventListener("dblclick", check2);
+    shield2.removeEventListener("dblclick", check2);
+    shield3.removeEventListener("dblclick", check2);
+    steveChoice();
+}
+function ahHellNo()
+
+    {
+        displayScreen.appendChild(steveText2);
+        steveText2.innerText = "press The left arrow " + PublicRandomNum;
+        setTimeout(()=>{steveText2.innerText = "press The right arrow " + PublicRandomNum2;}, 800);
+        setTimeout(()=>{steveText2.innerText = "press The down arrow " + PublicRandomNum3;}, 1600);
+        setTimeout(()=>{steveText2.innerText = "press The up arrow " + PublicRandomNum4;}, 2400);
+        setTimeout(()=>{steveText2.innerText = "";}, 3200);
+        window.addEventListener("keydown", buttonsA2);
+        displayScreen.appendChild(submitBtn);
+        submitBtn.innerText = "Submit";
+        submitBtn.addEventListener("click", checkD);
+    }
+    function buttonsA2(e)
+    {    
+    switch(e.code) {
+        case "ArrowLeft":
+            left++;
+            break;
+        case "ArrowRight":
+            right++;
+            break;
+        case "ArrowUp":
+            up++;
+            break;
+        case "ArrowDown":
+            down++;
+            break;
+        default:
+            console.log("A key was pressed but it wasnt the an arrow key");
+    }
+    }
+    function checkD()
+    {
+        submitBtn.removeEventListener("click", check);
+        window.removeEventListener("click", buttonsA2);
+        if( up == PublicRandomNum4 && 
+            down == PublicRandomNum3 && 
+            right == PublicRandomNum2 && 
+            left == PublicRandomNum )
+        {
+            steveText.innerText = "Only steve loses 5%!";
+            health = health - 5;
+        }
+        else
+        {
+            steveText.innerText = "You and steve lost 5%!";
+            player1.health = player1.health - 5;
+            health = health - 5;
+        }
+        displayScreen.removeChild(submitBtn);
+        displayScreen.removeChild(steveText2);
+        up = 0;
+        down = 0;
+        right = 0;
+        left = 0;
+        steveFight();
+    }
+//healing
 function heal()
 {
+    btn3.removeEventListener("click", heal);
+    backBtn.addEventListener("click", goBack);
     displayScreen.removeChild(fightBar);
     displayScreen.appendChild(healMenu);
     food1.addEventListener("click", decreaseFood);
@@ -146,6 +275,13 @@ function heal()
     food8.addEventListener("click", decreaseFood);
     food9.addEventListener("click", decreaseFood);
 }
+function goBack()
+{
+    backBtn.removeEventListener("click", goBack);
+    displayScreen.removeChild(healMenu);
+    steveFight();
+}
+
 function decreaseFood()
 {
     console.log(player1.food);
@@ -196,8 +332,9 @@ function steveChoice()
 {
     
     steveHealth.innerText = "Steve's Health: " + health;
-    let num = Math.random() * 2 + 1;
+    let num = Math.random() * 3 + 1;
     num = Math.floor(num);
+    num = 3;
     switch(num)
     {
         case 1:
@@ -206,11 +343,13 @@ function steveChoice()
         case 2:
             steveAttack4();
             break;
+        case 3:
+            steveAttack5();
+            break;
     }
 }
 function randomizedAttack()
 {
-    console.log("ran");
     let num = Math.random() * 3 + 1;
     num = Math.floor(num);
     switch(num)
@@ -306,19 +445,15 @@ function buttonsA(e)
 {    
     switch(e.code) {
         case "ArrowLeft":
-            console.log("the left arrow was pressed");
             left++;
             break;
         case "ArrowRight":
-            console.log("the right arrow was pressed");
             right++;
             break;
         case "ArrowUp":
-            console.log("the up arrow was pressed");
             up++;
             break;
         case "ArrowDown":
-            console.log("the down arrow was pressed");
             down++;
             break;
         default:
@@ -350,6 +485,36 @@ function check()
     steveFight();
 }
 
+let redS = document.querySelector(".red");
+let blueS = document.querySelector(".blue");
+let redBtn = document.querySelector(".redBtnV");
+let blueBtn = document.querySelector(".blueBtnV");
+function steveAttack5()
+{
+    random2();
+    if (PublicRandomNum5 == 1)
+    {
+        console.log("1");
+        redS.classList.add("redA");
+        redS.classList.remove("red");
+        setTimeout(()=>{redS.classList.remove("redA"); redS.classList.add("red");}, 1000);
+    }
+    else if (PublicRandomNum5 == 2)
+    {
+        console.log("2");
+        blueS.classList.add("blueA");
+        blueS.classList.remove("blue");
+        setTimeout(()=>{blueS.classList.remove("blueA"); blueS.classList.add("blue");}, 1000);
+    }
+    else
+    {
+        console.log("oh no");
+    }
+    redBtn.classList.add("redBtn");
+    blueBtn.classList.add("blueBtn");
+    redBtn.classList.remove("redBtnV");
+    blueBtn.classList.remove("blueBtnV");
+}
 function removeChildrenOfAttacks123()
 {
     displayScreen.removeChild(answer);
@@ -361,6 +526,10 @@ function removeChildrenOfAttacks123()
 //exports
 export
 {
+    left,
+    right,
+    up,
+    down,
     steveFight,
     steve
 }
@@ -376,9 +545,12 @@ import
 } from "./playMusic.js";
 import
 {
+    random2,
     random,
     PublicRandomNum,
     PublicRandomNum2,
     PublicRandomNum3,
-    PublicRandomNum4
+    PublicRandomNum4,
+    PublicRandomNum5,
+    PublicRandomNum6
 } from "./PublicRandomNumbers.js";

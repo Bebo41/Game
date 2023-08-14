@@ -89,8 +89,9 @@ function removeChildren2()
         displayScreen.removeChild(playerAge);
         Mega();
         setTimeout(Mega, 10);
-        setTimeout(Mega, 200000);
-        setTimeout(Mega, 400000);
+        setTimeout(Mega, 160000);
+        setTimeout(Mega, 320000);
+        setTimeout(Mega, 470000);
         player1.weapon = "Sword";
         steve.setAttribute("class", "steve2");
         steveFight();
