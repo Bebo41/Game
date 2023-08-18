@@ -53,7 +53,7 @@ body
 }
 .redA
 {
-    animation: square 1s ease-in;
+    animation: square 0.3s ease-in;
     display: all;
     background: red;
     border: 2px black solid;
@@ -62,7 +62,7 @@ body
 }
 .blueA
 {
-    animation: square 1s ease-in;
+    animation: square 0.3s ease-in;
     display: all;
     background: blue;
     border: 2px solid black;

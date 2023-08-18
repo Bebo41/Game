@@ -76,9 +76,18 @@ let down = 0;
 let right = 0;
 let left = 0;
 let health = 400;
+let turn = 0;
 
 function steveFight()
 {
+    if(player1.health > 0 && health > 0)
+    {
+        turn++;
+    }else
+    {
+        steveHealth.innerText = "Steve's Health: " + health;
+        removeChildrenOfFight();
+    }
     random();
     appendChildrenToFight();
     displayScreen.classList.add("display-screen-b");
@@ -94,13 +103,14 @@ function steveFight()
     btn1.addEventListener("click", attack);
     btn2.addEventListener("click", appendShieldsForDefence);
     btn3.addEventListener("click", heal);
+    btn4.addEventListener("click", removeChildrenOfFight);
 }
 function removeChildrenOfFight()
 {
     displayScreen.removeChild(steveText);
     displayScreen.removeChild(steveHealth);
     displayScreen.removeChild(fightBar);
-    sword.setAttribute("class", "sword")
+    sword.setAttribute("class", "sword");
 }
 function appendChildrenToFight()
 {
@@ -132,17 +142,10 @@ function attack()
         Punch();
         Punch();
     }, 2000);
+    setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
+    setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
     health = health - 20;
-    if(player1.health > 0 && health > 0)
-    {
-        setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
-        setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
-        setTimeout(steveChoice, 5000); 
-    }else
-    {
-        steveHealth.innerText = "Steve's Health: " + health;
-        removeChildrenOfFight();
-    }
+    setTimeout(steveChoice, 5000);
 }
 //defending
 function appendShieldsForDefence()
@@ -334,7 +337,7 @@ function steveChoice()
     steveHealth.innerText = "Steve's Health: " + health;
     let num = Math.random() * 3 + 1;
     num = Math.floor(num);
-    num = 3;
+    console.log(num);
     switch(num)
     {
         case 1:
@@ -485,36 +488,6 @@ function check()
     steveFight();
 }
 
-let redS = document.querySelector(".red");
-let blueS = document.querySelector(".blue");
-let redBtn = document.querySelector(".redBtnV");
-let blueBtn = document.querySelector(".blueBtnV");
-function steveAttack5()
-{
-    random2();
-    if (PublicRandomNum5 == 1)
-    {
-        console.log("1");
-        redS.classList.add("redA");
-        redS.classList.remove("red");
-        setTimeout(()=>{redS.classList.remove("redA"); redS.classList.add("red");}, 1000);
-    }
-    else if (PublicRandomNum5 == 2)
-    {
-        console.log("2");
-        blueS.classList.add("blueA");
-        blueS.classList.remove("blue");
-        setTimeout(()=>{blueS.classList.remove("blueA"); blueS.classList.add("blue");}, 1000);
-    }
-    else
-    {
-        console.log("oh no");
-    }
-    redBtn.classList.add("redBtn");
-    blueBtn.classList.add("blueBtn");
-    redBtn.classList.remove("redBtnV");
-    blueBtn.classList.remove("blueBtnV");
-}
 function removeChildrenOfAttacks123()
 {
     displayScreen.removeChild(answer);
@@ -531,7 +504,9 @@ export
     up,
     down,
     steveFight,
-    steve
+    steveText,
+    steve,
+    submitBtn
 }
 //imports
 import
@@ -545,12 +520,13 @@ import
 } from "./playMusic.js";
 import
 {
-    random2,
     random,
     PublicRandomNum,
     PublicRandomNum2,
     PublicRandomNum3,
     PublicRandomNum4,
-    PublicRandomNum5,
-    PublicRandomNum6
 } from "./PublicRandomNumbers.js";
+import
+{
+    steveAttack5
+} from "./ColorsAttack.js";
