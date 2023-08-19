@@ -60,7 +60,6 @@ function removeChildren()
         displayScreen.removeChild(askName);
         displayScreen.removeChild(nextButton);
         displayScreen.removeChild(playerName);
-        console.log(player1.name);
         check--;
         askAgeF();
     }

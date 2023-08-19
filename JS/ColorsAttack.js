@@ -34,7 +34,6 @@ function squareMotion()
         else if (PublicRandomNum5 == 2)
         {
             bSP++;
-            console.log("2");
             blueS.classList.add("blueA");
             blueS.classList.remove("blue");
             setTimeout(()=>{blueS.classList.remove("blueA"); blueS.classList.add("blue");}, 500);
@@ -54,7 +53,6 @@ function waiting()
 }
 function check()
 {
-    console.log(rBC + " " + rSP + " " + bBC + " " + bSP)
     if(rBC == rSP && bBC == bSP)
     {
         steveText.innerText = "Correct Sequence!";

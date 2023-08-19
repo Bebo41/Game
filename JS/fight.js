@@ -68,8 +68,6 @@ btn3.setAttribute("class", "btn3");
 btn4.setAttribute("class", "btn4");
 
 const steve = document.querySelector(".steve");
-const sword = document.querySelector(".sword");
-
 
 let up = 0;
 let down = 0;
@@ -132,18 +130,11 @@ function appendChildrenToFight()
 //attacking
 function attack()
 {
+    player1.attack();
     displayScreen.removeChild(fightBar);
     btn1.removeEventListener("click", attack);
-    sword.setAttribute("class", "sword2");
-    setTimeout(() => 
-    {
-        steve.setAttribute("class", "steve3")
-        Punch();
-        Punch();
-        Punch();
-    }, 2000);
-    setTimeout(()=>{sword.setAttribute("class", "sword")}, 3000);
-    setTimeout(()=>{steve.setAttribute("class", "steve2")}, 5000);
+    setTimeout(() => {steve.setAttribute("class", "steve3")}, 2000);
+    setTimeout(() => {steve.setAttribute("class", "steve2")}, 5000);
     health = health - 20;
     setTimeout(steveChoice, 5000);
 }
@@ -231,8 +222,6 @@ function ahHellNo()
         case "ArrowDown":
             down++;
             break;
-        default:
-            console.log("A key was pressed but it wasnt the an arrow key");
     }
     }
     function checkD()
@@ -287,46 +276,7 @@ function goBack()
 
 function decreaseFood()
 {
-    console.log(player1.food);
-    switch(player1.food)
-    {
-        case 1:
-            healMenu.removeChild(food1);
-            break;
-        case 2:
-            healMenu.removeChild(food2);
-            break;
-        case 3:
-            healMenu.removeChild(food3);
-            break;
-        case 4:
-            healMenu.removeChild(food4);
-            break;
-        case 5:
-            healMenu.removeChild(food5);
-            break;
-        case 6:
-            healMenu.removeChild(food6);
-            break;
-        case 7:
-            healMenu.removeChild(food7);
-            break;
-        case 8:
-            healMenu.removeChild(food8);
-            break;
-        case 9:
-            healMenu.removeChild(food9);
-            break;
-        default:
-            console.log("error");
-            break;
-    }
-    player1.food--;
-    player1.health = player1.health + 16;
-    if (player1.health > 100)
-    {
-        player1.health = 100;
-    }
+    player1.heal();
     displayScreen.removeChild(healMenu);
     steveChoice();
 }
@@ -337,7 +287,6 @@ function steveChoice()
     steveHealth.innerText = "Steve's Health: " + health;
     let num = Math.random() * 3 + 1;
     num = Math.floor(num);
-    console.log(num);
     switch(num)
     {
         case 1:
@@ -460,7 +409,6 @@ function buttonsA(e)
             down++;
             break;
         default:
-            console.log("A key was pressed but it wasnt the an arrow key");
     }
 }
 function check()
@@ -506,7 +454,17 @@ export
     steveFight,
     steveText,
     steve,
-    submitBtn
+    submitBtn,
+    healMenu,
+    food1,
+    food2,
+    food3,
+    food4,
+    food5,
+    food6,
+    food7,
+    food8,
+    food9
 }
 //imports
 import
